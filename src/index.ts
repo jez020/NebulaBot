@@ -5,7 +5,7 @@
  * * Built: 01/24/2025
  * * Last Updated: 01/24/2025
  * * Bugs: None
- * * Todo: none
+ * * Todo: None
  */
 
 // Importing neccessary modules
@@ -25,15 +25,19 @@ const client = new Client({
 /**
  * ? A event for handling the ready event
  * 
+ * @bug None
+ * @todo None
  * @returns {void} returns nothing
  */
-client.once("ready", () => {
+client.once("ready", async () => {
     console.log( client.user?.username + " is ready! 🤖" );
 });
 
 /**
  * ? A event for adding commands to guilds
  * 
+ * @bug None
+ * @todo None
  * @returns {void} returns nothing
  */
 client.on("guildCreate", async (guild) => {
@@ -43,6 +47,8 @@ client.on("guildCreate", async (guild) => {
 /**
  * ? A event for handling user slash command interactions
  * 
+ * @bug None
+ * @todo None
  * @returns {void} returns nothing
  */
 client.on("interactionCreate", async (interaction) => {
