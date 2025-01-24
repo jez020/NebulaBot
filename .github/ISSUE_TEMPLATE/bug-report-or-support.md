@@ -1,12 +1,3 @@
----
-name: Bug Report or Support
-about: Report a bug or Receive Support
-title: "[BUG REPORT/SUPPORT]"
-labels: bug, help wanted, question
-assignees: jez020
-
----
-
 # Issue Template
 
 ## Support Request
