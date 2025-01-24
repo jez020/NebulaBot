@@ -1,3 +1,12 @@
+---
+name: Bug Report or Support
+about: Report a bug or Request for Support
+title: "[Bug Report/Support] - Insert a short title"
+labels: bug, question
+assignees: jez020
+
+---
+
 # Issue Template
 
 ## Support Request
