@@ -25,16 +25,17 @@ available at [projectNebula](https://github.com/jez020/projectNebula).
 
 1. Create a `.env` file in the root directory and add your bot token:
     ```
-    DISCORD_TOKEN=your-bot-token
+    DISCORD_TOKEN=<DISCORD_TOKEN>
+    DISCORD_CLIENT_ID=<DISCORD_CLIENT_ID>
     ```
 2. Customize the configuration in `config.json` as needed.
 
 ## Usage
 
 Start the bot with the following command:
-```bash
-npm start
-```
+    ```bash
+    npm start
+    ```
 
 ## Contributing
 
