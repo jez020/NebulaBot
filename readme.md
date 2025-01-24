@@ -54,8 +54,8 @@ maintainer at your-email@example.com.
 
 ## Support
 
-If you need help or have any questions, feel free to join our Discord server or 
-check out the documentation in the `docs` directory.
+If you need help or have any questions, feel free to create an issue. I will
+respond to your issue ASAP.
 
 ## Acknowledgements
 
