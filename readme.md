@@ -47,11 +47,6 @@ with your changes.
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 for details.
 
-## Contact
-
-For any questions or suggestions, feel free to open an issue or contact the 
-maintainer at your-email@example.com.
-
 ## Support
 
 If you need help or have any questions, feel free to create an issue. I will
