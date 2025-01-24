@@ -1,0 +1,8 @@
+# ! Ignore module files
+/node_modules/
+
+# ! Ignore build files
+/build/
+
+# ! ignore env files
+.env
