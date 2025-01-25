@@ -54,12 +54,32 @@ client.on("guildCreate", (guild) => {
  * @returns {Promise<void>} returns nothing
  */
 client.on("interactionCreate", (interaction) => {
-    if (interaction.isCommand()) {
-        const { commandName } = interaction;
-        commands[commandName as keyof typeof commands].execute(interaction, 
-            client).catch(console.error);
-    }
+    if (!interaction.isCommand()) return;
+    const { commandName } = interaction;
+    commands[commandName as keyof typeof commands]
+        .execute(interaction, client).catch(console.error);
 });
+
+/**
+ * ? A event for handling user slash command interactions
+ * 
+ * @bug None
+ * @todo None
+ * @returns {Promise<void>} returns nothing
+ */
+client.on("interactionCreate", (interaction) => {
+    if (!interaction.isCommand()) return;
+    const { commandName } = interaction;
+    const command = commands[commandName as keyof typeof commands];
+
+    // Handling autocomplete commands
+    if (interaction.isAutocomplete()) {
+        Promise.resolve(command.autocomplete(interaction))
+            .catch(console.error);
+	}
+});
+
+
 
 // ! Starting the bot
 client.login(config.DISCORD_TOKEN).catch(console.error);

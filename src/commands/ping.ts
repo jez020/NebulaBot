@@ -38,3 +38,13 @@ export async function execute(interaction: CommandInteraction, client: Client) {
     // Sending the pingEmbed
     return interaction.reply({ embeds: [pingEmbed] });
 };
+
+/**
+ *  ? Autocomplete template for any command
+ *  @param {CommandInteraction} interaction The interaction object assiociated
+ *  with the command
+ *  @returns 
+ */
+export function autocomplete(interaction: CommandInteraction) {
+    return interaction;
+}

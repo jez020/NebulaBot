@@ -4,7 +4,11 @@ available at [projectNebula](https://github.com/jez020/projectNebula).
 
 ## Features
 
-- **Moderation**: Kick, ban, mute, and manage users with ease.
+Still under active development!
+
+- ban, info, ping
+- Fully documented, easy to navigate and code
+- Type script strongly typed using strict eslint
 
 ## Installation
 

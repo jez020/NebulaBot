@@ -76,3 +76,14 @@ export async function execute(interaction: CommandInteraction) {
     // Sending the infoEmbed
     return interaction.reply({ embeds: [infoEmbed] });
 };
+
+
+/**
+ *  ? Autocomplete template for any command
+ *  @param {CommandInteraction} interaction The interaction object assiociated
+ *  with the command
+ *  @returns 
+ */
+export function autocomplete(interaction: CommandInteraction) {
+    return interaction;
+}
