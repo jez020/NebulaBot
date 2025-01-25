@@ -5,7 +5,7 @@
  * * Built: 01/24/2025
  * * Last Updated: 01/24/2025
  * * Bugs: None
- * * Todo: Add a function that will deploy specific commands to a specific guild
+ * * Todo: None
  */
 
 import { REST, Routes } from "discord.js";
