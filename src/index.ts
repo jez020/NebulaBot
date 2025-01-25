@@ -29,8 +29,8 @@ const client = new Client({
  * @todo None
  * @returns {void} returns nothing
  */
-client.once("ready", async () => {
-    console.log( client.user?.username + " is ready! 🤖" );
+client.once("ready", () => {
+    console.log( "Bot is ready! 🤖" );
 });
 
 /**
@@ -40,8 +40,8 @@ client.once("ready", async () => {
  * @todo None
  * @returns {void} returns nothing
  */
-client.on("guildCreate", async (guild) => {
-    await deployCommands({ guildId: guild.id });
+client.on("guildCreate", (guild) => {
+    deployCommands({ guildId: guild.id }).catch(console.error);
 });
 
 /**
@@ -49,17 +49,15 @@ client.on("guildCreate", async (guild) => {
  * 
  * @bug None
  * @todo None
- * @returns {void} returns nothing
+ * @returns {Promise<void>} returns nothing
  */
-client.on("interactionCreate", async (interaction) => {
-    if (!interaction.isCommand()) {
-        return;
-    }
-    const { commandName } = interaction;
-    if (commands[commandName as keyof typeof commands]) {
-        commands[commandName as keyof typeof commands].execute(interaction);
+client.on("interactionCreate", (interaction) => {
+    if (interaction.isCommand()) {
+        const { commandName } = interaction;
+        commands[commandName as keyof typeof commands].execute(interaction)
+            .catch(console.error);
     }
 });
 
 // ! Starting the bot
-client.login(config.DISCORD_TOKEN);
+client.login(config.DISCORD_TOKEN).catch(console.error);

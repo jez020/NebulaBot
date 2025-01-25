@@ -11,5 +11,12 @@
     "strict": true,
     "strictNullChecks": true,
     "skipLibCheck": true
-  }
+  },
+  "include": [
+      "src/**/*.ts",
+  ],
+  "exclude": [
+      "eslint.config.mjs",
+      "dist/**"
+  ]
 }
