@@ -5,7 +5,7 @@
  * * Built: 01/24/2025
  * * Last Updated: 01/24/2025
  * * Bugs: None
- * * Todo: None
+ * * Todo: Add funcitonality to block wip commands from getting published
  */
 
 import { REST, Routes } from "discord.js";
