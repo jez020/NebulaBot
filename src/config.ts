@@ -1,6 +1,6 @@
 /**
- * @fileoverview A document for validating all the configs and environment variables 
- * and making sure everything is in place
+ * @fileoverview A document for validating all the configs and environment 
+ * variables and making sure everything is in place
  * 
  * * Author: jez020
  * * Built: 01/24/2025
