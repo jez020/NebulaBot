@@ -8,7 +8,8 @@
  * * Todo: none
  */
 
-import { CommandInteraction, SlashCommandBuilder } from "discord.js";
+import { Client, CommandInteraction, EmbedBuilder, SlashCommandBuilder } 
+    from "discord.js";
 
 export const data = new SlashCommandBuilder()
     .setName("ping")
@@ -21,6 +22,19 @@ export const data = new SlashCommandBuilder()
  *  command is used.
  *  @returns {Promise<void>} returns a promise
  */
-export async function execute(interaction: CommandInteraction) {
-    return interaction.reply("Pong!");
+export async function execute(interaction: CommandInteraction, client: Client) {
+    // Embed for the ping command
+    const pingEmbed = new EmbedBuilder()
+        .setTitle("Pong!")
+        .setColor("Aqua")
+        .setDescription("Client Ping: `" + 
+            Math.abs(client.ws.ping).toString() + " ms` \n" + 
+            "Message Latency: `" +
+            Math.abs(Date.now() - interaction.createdTimestamp).toString() + 
+            " ms`")
+        .setFooter({ text: "Thank you for using me!" });
+
+
+    // Sending the pingEmbed
+    return interaction.reply({ embeds: [pingEmbed] });
 };

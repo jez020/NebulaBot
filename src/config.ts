@@ -14,9 +14,15 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-// ! Destructure the environment variables
+// ! Destructure the environment variables and define the other configs
 const { DISCORD_TOKEN, DISCORD_CLIENT_ID } = process.env;
-
+const skippedCommands : string[] = [];
+const description : string = "An open source, revolutionary Discord " +
+    "Moderation bot with a main focus on a separate application for the " +
+    "moderation aspect of the bot. This bot is built with TypeScript and " +
+    "Discord.js.";
+const githubUrl : string = "https://github.com/jez020/nebulabot";
+const supportGuildId : string = "1332479383600103585";
 
 // Checks if the environment variables are present
 if (!DISCORD_TOKEN || !DISCORD_CLIENT_ID) {
@@ -29,4 +35,8 @@ if (!DISCORD_TOKEN || !DISCORD_CLIENT_ID) {
 export const config = {
     DISCORD_TOKEN,
     DISCORD_CLIENT_ID,
+    skippedCommands,
+    description,
+    githubUrl,
+    supportGuildId
 };

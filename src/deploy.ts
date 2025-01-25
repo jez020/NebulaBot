@@ -13,7 +13,16 @@ import { config } from "./config";
 import { commands } from "./commands";
 import { DeployCommandsProps } from "./types/interfaces";
 
-const commandsData = Object.values(commands).map((command) => command.data);
+let commandsData = Object.values(commands).map((command) => {
+  if(!config.skippedCommands.includes(command.data.name.toLowerCase())){
+    return command.data;
+  }
+});
+
+// Filters out the undefined values
+commandsData = commandsData.filter(function( element ) {
+  return element !== undefined;
+});
 
 const rest = new REST({ version: "10" }).setToken(config.DISCORD_TOKEN);
 
@@ -77,13 +86,14 @@ export async function deployGlobalCommands(removeCommands = false) {
  * @returns {Promise<void>} returns a promise of nothing
 */
 export async function deployCommandsToGuilds(guildIds: string[], 
-  commandNames: string[] | null) {
-  
-  // Checks if the commandNames is null, if it is, set it to every command
-  if(commandNames === null) {
-    commandNames = commandsData.map((command) => command.name);
-  }
+  commandNames: (string | undefined)[] = commandsData
+    .map((command) => command?.name)) {
 
+    // Filters out the undefined values
+    commandNames = commandNames.filter(function( element ) {
+      return element !== undefined;
+    });
+    
   // Updates guilds to have the new commands
   try {
     console.log("Started refreshing application (/) commands for multiple " + 
@@ -92,7 +102,7 @@ export async function deployCommandsToGuilds(guildIds: string[],
     let specificCommandsData = Object.values(commands)
       .map(function (command) {
 
-      if(commandNames.includes(command.data.name)) {
+      if(commandNames.includes(command.data.name.toLowerCase())) {
         return command.data; 
       }
 

@@ -9,7 +9,9 @@
  */
 
 import * as ping from "./ping";
+import * as info from "./info";
 
 export const commands = {
     ping,
+    info
 };

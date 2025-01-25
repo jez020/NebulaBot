@@ -30,6 +30,8 @@ const client = new Client({
  * @returns {void} returns nothing
  */
 client.once("ready", () => {
+
+    // deployCommands({ guildId: config.supportGuildId }).catch(console.error);
     console.log( "Bot is ready! 🤖" );
 });
 
@@ -54,8 +56,8 @@ client.on("guildCreate", (guild) => {
 client.on("interactionCreate", (interaction) => {
     if (interaction.isCommand()) {
         const { commandName } = interaction;
-        commands[commandName as keyof typeof commands].execute(interaction)
-            .catch(console.error);
+        commands[commandName as keyof typeof commands].execute(interaction, 
+            client).catch(console.error);
     }
 });
 
