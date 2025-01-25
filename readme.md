@@ -9,6 +9,8 @@ Still under active development!
 - ban, info, ping
 - Fully documented, easy to navigate and code
 - Type script strongly typed using strict eslint
+- Following the styling guide of major companies such as less than 80 characters
+per line
 
 ## Installation
 
