@@ -1,9 +1,9 @@
 /**
- * @fileoverview A document for a file handling the ban command 
- * Bans a user from the server
+ * @fileoverview A document for a file handling the kick command
+ *  Kicks a user from the server
  * 
  * * Author: jez020
- * * Built: 01/24/2025
+ * * Built: 01/25/2025
  * * Last Updated: 01/25/2025
  * * Bugs: None
  * * Todo: none
@@ -14,20 +14,20 @@ import { CommandInteraction, CommandInteractionOptionResolver, EmbedBuilder,
     SlashCommandBuilder } from "discord.js";
 
 export const data = new SlashCommandBuilder()
-    .setName("ban")
-    .setDescription("Bans a user from the server")
+    .setName("kick")
+    .setDescription("Kicks a user from the server")
     .addUserOption(option =>
 		option.setName('user')
-			.setDescription('Select a user to ban')
+			.setDescription('Select a user to kick')
             .setRequired(true))
     .addStringOption(option =>
         option.setName('reason')
-            .setDescription('What is the reason for the ban?')
+            .setDescription('What is the reason for the kick?')
             .setRequired(false));
 
 /**
- *  ? ban command
- *  ? Bans a user from the server
+ *  ? kick command
+ *  ? Kicks a user from the server
  * 
  *  @param {CommandInteraction} interaction The interaction for when a slash
  *  command is used.
@@ -42,13 +42,13 @@ export async function execute(interaction: CommandInteraction) {
     const member = interaction.guild?.members.cache.get(mentionedUser.id);
 
     // Checking if the user is bannable. If not, return an error message
-    if( member == null || !member.bannable || mentionedUser.id === 
+    if( member == null || !member.kickable || mentionedUser.id === 
         interaction.user.id ) {
-        return interaction.reply({ content: "You cannot ban this user!", 
+        return interaction.reply({ content: "You cannot kick this user!", 
             flags: MessageFlags.Ephemeral });
     }else{
-        // Banning the user
-        member.ban({ reason: reason }).catch((err: unknown) => {
+        // Kicking the user
+        member.kick(reason).catch((err: unknown) => {
             console.error(err);
             return interaction.reply({ content: "An error occured while " + 
                 "trying to ban the user!", flags: MessageFlags.Ephemeral });
@@ -57,7 +57,7 @@ export async function execute(interaction: CommandInteraction) {
         // Embed for the info command
         const banEmbed : EmbedBuilder = new EmbedBuilder()
             .setTitle(`${mentionedUser.username}(${mentionedUser.id})` +  
-                ` has been banned.`)
+                ` has been kicked.`)
             .setDescription("Reason: " + reason)
             .setColor("Aqua")
             .setThumbnail(interaction.client.user.displayAvatarURL());
