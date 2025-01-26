@@ -11,9 +11,11 @@
 import * as ping from "./ping";
 import * as info from "./info";
 import * as ban from "./ban";
+import * as kick from "./kick";
 
 export const commands = {
     ping,
     info,
-    ban
+    ban,
+    kick,
 };
