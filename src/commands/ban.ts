@@ -2,6 +2,8 @@
  * @fileoverview A document for a file handling the ban command 
  * Bans a user from the server
  * 
+ * @permissions Requires banmember permission
+ * 
  * * Author: jez020
  * * Built: 01/24/2025
  * * Last Updated: 01/25/2025
@@ -11,11 +13,13 @@
 
 import { CommandInteraction, CommandInteractionOptionResolver, EmbedBuilder, 
     MessageFlags, 
+    PermissionFlagsBits, 
     SlashCommandBuilder } from "discord.js";
 
 export const data = new SlashCommandBuilder()
     .setName("ban")
     .setDescription("Bans a user from the server")
+    .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
     .addUserOption(option =>
 		option.setName('user')
 			.setDescription('Select a user to ban')
@@ -60,7 +64,7 @@ export async function execute(interaction: CommandInteraction) {
                 ` has been banned.`)
             .setDescription("Reason: " + reason)
             .setColor("Aqua")
-            .setThumbnail(interaction.client.user.displayAvatarURL());
+            .setThumbnail(member.displayAvatarURL());
 
         // Sending the infoEmbed
         return interaction.reply({ embeds: [banEmbed] });

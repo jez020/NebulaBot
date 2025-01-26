@@ -2,6 +2,8 @@
  * @fileoverview A document for a file handling the kick command
  *  Kicks a user from the server
  * 
+ * @permissions Requires kickmember permission
+ * 
  * * Author: jez020
  * * Built: 01/25/2025
  * * Last Updated: 01/25/2025
@@ -11,11 +13,13 @@
 
 import { CommandInteraction, CommandInteractionOptionResolver, EmbedBuilder, 
     MessageFlags, 
+    PermissionFlagsBits, 
     SlashCommandBuilder } from "discord.js";
 
 export const data = new SlashCommandBuilder()
     .setName("kick")
     .setDescription("Kicks a user from the server")
+    .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers)
     .addUserOption(option =>
 		option.setName('user')
 			.setDescription('Select a user to kick')
@@ -42,6 +46,7 @@ export async function execute(interaction: CommandInteraction) {
     const member = interaction.guild?.members.cache.get(mentionedUser.id);
 
     // Checking if the user is bannable. If not, return an error message
+    console.log(member?.kickable);
     if( member == null || !member.kickable || mentionedUser.id === 
         interaction.user.id ) {
         return interaction.reply({ content: "You cannot kick this user!", 
@@ -60,7 +65,7 @@ export async function execute(interaction: CommandInteraction) {
                 ` has been kicked.`)
             .setDescription("Reason: " + reason)
             .setColor("Aqua")
-            .setThumbnail(interaction.client.user.displayAvatarURL());
+            .setThumbnail(member.displayAvatarURL());
 
         // Sending the infoEmbed
         return interaction.reply({ embeds: [banEmbed] });
