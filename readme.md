@@ -48,6 +48,10 @@ Start the bot with the following command:
 Contributions are welcome! Please fork the repository and create a pull request 
 with your changes.
 
+Please only create pull request to the beta branch, as all commits must go
+through extensive testing before being merged to stable (the build the actual
+bot is running)
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
