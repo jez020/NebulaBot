@@ -6,12 +6,9 @@
 ## Usage in this project
 Using this before a line to change color to be the respective color!
 
-Red (!) - Section titles
-Blue (?) - The title of the a function/module/interface/etc
-Green (*) - Meta data of a document, including authors, bugs (NOT INCLUDED IN
+- Red (!) - Section titles
+- Blue (?) - The title of the a function/module/interface/etc
+- Green (*) - Meta data of a document, including authors, bugs (NOT INCLUDED IN
 tsdoc!)
-Yellow (^)
-Pink (&)
-Purple (~)
-Mustard (todo)
-Grey (//)
+- Mustard (todo)
+- Grey (//)

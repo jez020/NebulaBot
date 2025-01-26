@@ -26,6 +26,7 @@ export default tseslint.config(
     rules: {
       'semi': [2, "always"],
       "max-len": [2, { "code": 80 }],
+      "@typescript-eslint/no-unsafe-assignment": "off",
     },
   }
 );

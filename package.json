@@ -1,6 +1,6 @@
 {
   "name": "nebulabot",
-  "version": "1.0.0",
+  "version": "1.1.0-beta1",
   "description": "NebulaBot is a Discord bot focused on moderation, with an application interface  available at [projectNebula](https://github.com/jez020/projectNebula).",
   "main": "index.js",
   "scripts": {
