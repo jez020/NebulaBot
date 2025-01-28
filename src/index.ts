@@ -3,18 +3,19 @@
  * 
  * * Author: jez020
  * * Built: 01/24/2025
- * * Last Updated: 01/24/2025
+ * * Last Updated: 01/27/2025
  * * Bugs: None
  * * Todo: None
  */
 
 // Importing neccessary modules
-import { Client } from "discord.js";
+import { ButtonInteraction, Client, CommandInteraction } from "discord.js";
 
 // Importing local modules
 import { deployCommands } from "./deploy";
 import { commands } from "./commands";
 import { config } from "./config";
+import * as model from "./modelManager";
 
 // ! setting up modules/classes
 // Creating a new client for discord bot with intents
@@ -77,6 +78,43 @@ client.on("interactionCreate", (interaction) => {
         Promise.resolve(command.autocomplete(interaction))
             .catch(console.error);
 	}
+});
+
+/**
+ * ? A event for handling models events
+ * 
+ * @bug None
+ * @todo None
+ * @returns {Promise<void>} returns nothing
+ */
+client.on("interactionCreate", (interaction) => {
+
+    // Handling context menu commands
+    if (interaction.isContextMenuCommand()) {
+        const { commandName } = interaction;
+        if (commandName in model.contextMenus) {
+            const command = model.contextMenus[commandName as keyof 
+                typeof model.contextMenus] as 
+                { 
+                    execute: (interaction: CommandInteraction,
+                    client: Client) => Promise<void> 
+                };
+            command.execute(interaction, client).catch(console.error);
+        }
+
+    // Handling button commands
+    }else if (interaction.isButton()) {
+        const { customId } = interaction;
+        if (customId in model.contextMenus) {
+            const command = model.contextMenus[customId as keyof 
+                typeof model.contextMenus] as 
+                { 
+                    execute: (interaction: ButtonInteraction,
+                    client: Client) => Promise<void> 
+                };
+            command.execute(interaction, client).catch(console.error);
+        }
+    }
 });
 
 
