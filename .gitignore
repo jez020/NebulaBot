@@ -3,6 +3,7 @@
 
 # ! Ignore build files
 /build/
+/dist/
 
 # ! ignore env files
 .env
